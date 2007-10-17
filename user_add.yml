@@ -1,0 +1,31 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: True
+  become_user: root
+#  remote_user: root
+   
+  roles:
+    - credential
+
+
+
+  vars_prompt:
+    - name: "user_account"
+      prompt: "Enter name of the user"
+      private: no
+      when: user_add is defined
+
+    - name: "user_password"
+      prompt: "Enter a password for the user"
+      private: yes
+      encrypt: "sha512_crypt" #need to have python-passlib installed in local machine before we can use it
+      confirm: yes
+      salt_size: 7
+      when: user_add is defined
+
+
+    - name: "group_account"
+      prompt: "Enter name of the user_group"
+      private: no
+      when: user_add is defined 

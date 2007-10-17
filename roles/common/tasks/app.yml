@@ -1,0 +1,25 @@
+---
+
+- name: installing libselinux and python-passlib
+  yum: name={{ item }}  state=present
+  with_items:
+     - libselinux-python
+     - python-passlib
+  async: 100
+  poll: 5
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  tags: initial
+
+
+- name: installing libselinux and python-passlib
+  apt: name={{ item }}  state=present
+  with_items:
+     - libselinux-python
+     - python-passlib
+  async: 100
+  poll: 5
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: initial
+
+
+# tasks file for common

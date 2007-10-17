@@ -1,0 +1,31 @@
+---
+- name: installing lib-security
+  yum: name=libselinux-python state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  tags: initial
+
+- name: Installing MySQL-python
+  yum: name=MySQL-python state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  tags: initial
+
+- name: Installing python-passlib
+  yum: name=python-passlib state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  tags: initial
+
+- name: installing lib-security
+  apt: name=libselinux-python state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+
+- name: Installing MySQL-python
+  apt: name=MySQL-python state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+
+- name: Installing python-passlib
+  apt: name=python-passlib state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+# tasks file for common

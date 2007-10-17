@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: yes
+#  become: True
+#  become_user: root
+#  remote_user: naveen
+  roles:
+   - credential
+
+

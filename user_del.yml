@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: yes
+#  become: True
+#  become_user: root
+  remote_user: root
+  roles:
+   - credential
+
+  vars_prompt:
+    - name: "user_account"
+      prompt: "Enter name of the user"
+      private: no
+      confirm: yes
+      when: user_del is defined
+
+  
